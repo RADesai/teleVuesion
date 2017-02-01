@@ -1,9 +1,7 @@
 <template>
-    <div id='player'>
-        <h2>This is player.vue!</h2>
+    <div id='show'>
+        <h2>This is show.vue!</h2>
         <h3>{{ msg }}</h3>
-        <h4>{{ stats }}</h4>
-        <button v-on:click="getStats">Get Stats!</button>
     </div>
 </template>
 
@@ -13,14 +11,14 @@ var VueResource = require('vue-resource');
 Vue.use(VueResource);
 
   export default {
-    name: 'player',
+    name: 'show',
     ready: function() {
       console.log('ready');
       this.getStats();
     },
     data() {
       return {
-        msg: 'msg in Player!',
+        msg: 'msg in Show!',
         stats: {}
       }
     },
