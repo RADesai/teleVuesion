@@ -15,7 +15,7 @@ let router = new VueRouter({
       component: Root
     },
     {
-      path: '/*',
+      path: '/show',
       name: 'show',
       component: Show
     }
@@ -24,5 +24,9 @@ let router = new VueRouter({
 
 new Vue({
   router,
-  template: '<div><router-view class="view"></router-view></div>'
+  template: `
+    <div>
+      <router-view class="view"></router-view>
+    </div>
+  `
 }).$mount('#app');

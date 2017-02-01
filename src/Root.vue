@@ -26,6 +26,10 @@
         <div class="test">
           {{ show }}
         </div>
+
+        <div class="test">
+          <router-link :to="'show'">Show</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -42,7 +46,8 @@
     data() {
       return {
         show: {},
-        shows: []
+        shows: [],
+        selected: false
       }
     },
     methods: {
@@ -71,6 +76,13 @@
           return show.id === id;
         })
       }
+      // showSelected: function() {
+      //   console.log('show selected method');
+      //   if (Object.keys(this.show).length > 0) {
+      //     console.log('show selected method if');
+      //     this.selected = true;
+      //   }
+      // }
     }
   }
 </script>

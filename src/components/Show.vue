@@ -1,8 +1,23 @@
 <template>
-    <div id='show'>
-        <h2>This is show.vue!</h2>
-        <h3>{{ msg }}</h3>
+  <div id='show'>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+          <br>
+          <div class="head">
+            <router-link :to="'/'">Back to Search</router-link>
+            <h2>This is show.vue!</h2>
+            <h3>{{ msg }}</h3>
+          </div>
+          <br>
+          <div class="display">
+            Show details
+          </div>
+          <br>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -14,24 +29,23 @@ Vue.use(VueResource);
     name: 'show',
     ready: function() {
       console.log('ready');
-      this.getStats();
     },
     data() {
       return {
         msg: 'msg in Show!',
-        stats: {}
       }
     },
+    props: ['show'],
     methods: {
-      getStats: function() {
-        this.$http.get('https://www.mysportsfeeds.com/api/feed/pull/nfl/2016-2017-regular/cumulative_player_stats.json?playerstats=Att,Comp,Yds,TD')
-        .then((res) => {
-          console.log('Success:', res);
-          this.stats = res;
-        }, (err) => {
-          console.log('Error:', err);
-        });
-      }
+      // getStats: function() {
+      //   this.$http.get('https://www.mysportsfeeds.com/api/feed/pull/nfl/2016-2017-regular/cumulative_player_stats.json?playerstats=Att,Comp,Yds,TD')
+      //   .then((res) => {
+      //     console.log('Success:', res);
+      //     this.stats = res;
+      //   }, (err) => {
+      //     console.log('Error:', err);
+      //   });
+      // }
     }
   }
 </script>
