@@ -9,16 +9,8 @@ Vue.use(VueRouter);
 
 let router = new VueRouter({
   routes: [
-    {
-      path: '/',
-      name: 'root',
-      component: Root
-    },
-    {
-      path: '/show',
-      name: 'show',
-      component: Show
-    }
+    { path: '/', component: Root },
+    { path: '/show/:showId', props: true, component: Show }
   ]
 });
 

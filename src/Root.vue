@@ -17,7 +17,7 @@
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <br>
         <div class="shows" v-for="show in shows">
-          <img :src="show.image.medium" @click="getShow(show.id)" class="show">
+          <router-link :to="`show/${show.id}`" show="show"><img :src="show.image.medium" @click="getShow(show.id)" class="show"></router-link>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="test">
-          <router-link :to="'show'">Show</router-link>
+
         </div>
       </div>
     </div>
@@ -76,13 +76,6 @@
           return show.id === id;
         })
       }
-      // showSelected: function() {
-      //   console.log('show selected method');
-      //   if (Object.keys(this.show).length > 0) {
-      //     console.log('show selected method if');
-      //     this.selected = true;
-      //   }
-      // }
     }
   }
 </script>
