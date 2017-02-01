@@ -1,28 +1,28 @@
 <template>
-  <div class='container'>
+  <div class="container">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <br>
-        <div class='head'>
+        <div class="head">
           <h2>TVue will help you find the best on TV!</h2>
         </div>
         <br>
-        <div class='display'>
-          <input type='text' v-on:keyup='searchPreview()' v-on:keyup.enter='searchShows()' class='form-control' id="query" placeholder="Search for a show"></input>
+        <div class="display">
+          <input type="text" v-on:keyup="searchPreview()" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Search for a show"></input>
         </div>
         <br>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-11 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <br>
         <div class="shows" v-for="show in shows">
-          <img :src='show.image.medium' @click='getShow(show.id)' class="show">
+          <img :src="show.image.medium" @click="getShow(show.id)" class="show">
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-11 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <div class="test">
           {{ show }}
         </div>
@@ -65,10 +65,8 @@
       },
       searchPreview: function(query) {
         query = document.getElementById('query').value;
-        // console.log('Live Search Preview @ 42:', query);
       },
       getShow: function(id) {
-        // this.showId = e;
         this.show = this.shows.filter((show) => {
           return show.id === id;
         })
