@@ -17,18 +17,7 @@
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <br>
         <div class="shows" v-for="show in shows">
-          <router-link :to="`show/${show.id}`" :show="show"><img :src="show.image.medium" class="show"></router-link>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-        <div class="test">
-          {{ show }}
-        </div>
-
-        <div class="test">
-
+          <router-link :to="`show/${show.id}`" :show="show">{{ show.name }}<img :src="show.image.medium" class="show"></router-link>
         </div>
       </div>
     </div>
@@ -76,13 +65,19 @@
 </script>
 
 <style>
+.container {
+  background-color: #E3F6F7;
+}
 .head {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito'
 }
 
 .shows {
   padding-left: 10px;
   display: inline-block;
+  text-decoration: none;
+  font-family: 'Nunito', sans-seri;
+  color: #867BCD;
 }
 
 .show {
