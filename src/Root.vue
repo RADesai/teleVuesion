@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 header">
         <br>
         <div class="head">
           <h2>TVue will help you find the best on TV!</h2>
@@ -64,25 +64,50 @@
   }
 </script>
 
-<style>
+<style scoped>
 .container {
-  background-color: #E3F6F7;
+  /*background-color: #E3F6F7;*/
+  border-width: thin;
+  border-radius: 25;
+  border-color: #FFD877;
 }
+
+.header {
+  border-radius: 10px;
+  border-width: thin;
+  border-color: #54acee;
+  background-color: #867bcd;
+}
+
 .head {
-  font-family: 'Nunito'
+  font-family: 'Nunito';
+  color: #FFF;
+}
+
+input:focus {
+  border: 2px solid #FFD877;
+  box-shadow: #FFD877;
 }
 
 .shows {
   padding-left: 10px;
   display: inline-block;
   text-decoration: none;
-  font-family: 'Nunito', sans-seri;
+  font-family: 'Nunito', sans-serif;
   color: #867BCD;
 }
 
 .show {
   border-radius: 3px;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: #FFD877;
+}
+
+.show:hover {
+  opacity: 0.75;
+  text-decoration: none;
+  color: #FFD877;
 }
 
 .test {

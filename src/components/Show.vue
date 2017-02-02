@@ -113,8 +113,13 @@
 </script>
 
 <style>
-.show {
-  background-color: #FFD877;
+.head {
+  font-family: 'Nunito';
+  color: #867BCD;
+}
+
+.btn {
+  color: #867BCD;
 }
 
 .sidebar {
