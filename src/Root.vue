@@ -17,7 +17,7 @@
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <br>
         <div class="shows" v-for="show in shows">
-          <router-link :to="`show/${show.id}`" show="show"><img :src="show.image.medium" @click="getShow(show.id)" class="show"></router-link>
+          <router-link :to="`show/${show.id}`" :show="show"><img :src="show.image.medium" class="show"></router-link>
         </div>
       </div>
     </div>
@@ -70,11 +70,6 @@
       },
       searchPreview: function(query) {
         query = document.getElementById('query').value;
-      },
-      getShow: function(id) {
-        this.show = this.shows.filter((show) => {
-          return show.id === id;
-        })
       }
     }
   }
