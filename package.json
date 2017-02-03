@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RADesai/teleVuesion.git"
   },
-  "author": "",
+  "author": "Raj Desai",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RADesai/teleVuesion/issues"
