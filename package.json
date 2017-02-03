@@ -4,8 +4,8 @@
   "description": "Find out the best in TV with TVue!",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "engines": {
@@ -30,6 +30,7 @@
     "vue-hot-reload-api": "^2.0.8",
     "vue-resource": "^1.1.1",
     "vue-router": "^2.2.0",
+    "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.9.0"
   },
   "devDependencies": {
@@ -43,7 +44,6 @@
     "style-loader": "^0.13.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^7.3.0",
-    "webpack": "^1.12.2",
     "webpack-hot-middleware": "^2.15.0"
   }
 }
