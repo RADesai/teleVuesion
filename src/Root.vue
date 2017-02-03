@@ -3,26 +3,27 @@
     <div v-if="selected" class="selected">
       <Show :show="show" :shows="shows"></Show>
     </div>
-    <div v-if="!selected" class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 header">
-        <br>
-        <div class="head">
-          <h2>Search TVue for the best on TV!</h2>
+    <div v-if="!selected" class="jumbotron">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 header">
+          <br>
+          <div class="head">
+            <h2>Search TVue for the best on TV!</h2>
+          </div>
+          <br>
+          <div class="display">
+            <input type="text" v-on:keyup="searchPreview()" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Search for a show"></input>
+          </div>
+          <br>
         </div>
-        <br>
-        <div class="display">
-          <input type="text" v-on:keyup="searchPreview()" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Search for a show"></input>
-        </div>
-        <br>
       </div>
-    </div>
-    <div v-if="!selected" class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-        <br>
-        <div class="shows" v-for="show in shows">
-          <!-- <router-link :to="`show/${show.id}`" :show="show">{{ show.name }}<img :src="show.image.medium" class="show"></router-link> -->
-          {{ show.name }}
-          <img @click="setShow(show)" :src="show.image.medium" class="show">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+          <br>
+          <div class="shows" v-for="show in shows">
+            {{ show.name }}
+            <img @click="setShow(show)" :src="show.image.medium" class="show">
+          </div>
         </div>
       </div>
     </div>
@@ -66,7 +67,6 @@
         query = document.getElementById('query').value;
       },
       setShow: function(show) {
-        console.log('clicked:', show);
         this.selected = true;
         this.show = show;
       }
@@ -75,54 +75,47 @@
 </script>
 
 <style scoped>
-.container {
-  /*background-color: #E3F6F7;*/
-  border-width: thin;
-  border-radius: 25;
-  border-color: #FFD877;
-}
+  .header {
+    border-radius: 10px;
+    border-width: thin;
+    border-color: #54acee;
+    background-color: #867bcd;
+  }
 
-.header {
-  border-radius: 10px;
-  border-width: thin;
-  border-color: #54acee;
-  background-color: #867bcd;
-}
+  .head {
+    font-family: 'Nunito';
+    color: #FFF;
+  }
 
-.head {
-  font-family: 'Nunito';
-  color: #FFF;
-}
+  input {
+    color: #867Bcd;
+  }
 
-input:focus {
-  border: 2px solid #FFD877;
-  box-shadow: #FFD877;
-}
+  input:focus {
+    border: 2px solid #867BCD;
+    box-shadow: #867BCD;
+  }
 
-.shows {
-  padding-left: 10px;
-  display: inline-block;
-  text-decoration: none;
-  font-family: 'Nunito', sans-serif;
-  color: #867BCD;
-}
+  .shows {
+    padding-left: 10px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    color: #111162;
+  }
 
-.show {
-  border-radius: 3px;
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: #FFD877;
-}
+  .show {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #FFD877;
+    transition: transform .5s ease;
+  }
 
-.show:hover {
-  opacity: 0.7;
-  color: #FFD877;
-  cursor: pointer;
-}
-
-.test {
-  background-color: #FFD877;
-  font-family: 'Nunito', sans-serif;
-}
-
+  .show:hover {
+    opacity: 0.75;
+    color: #FFD877;
+    cursor: pointer;
+    transform: scale(0.85);
+  }
 </style>

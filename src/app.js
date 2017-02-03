@@ -19,6 +19,14 @@ new Vue({
   template: `
     <div>
       <router-view class="view"></router-view>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="container-fluid">
+            This app was made with Vue, Node, && Express, please feel free to contribute your own ideas here:
+            <a v-bind:href="'https://github.com/RADesai/teleVuesion'" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
   `
 }).$mount('#app');
