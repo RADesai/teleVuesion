@@ -75,7 +75,7 @@
         let query = document.getElementById('query').value;
         let that = this;
         this.shows = [];
-        this.$http.get(`http://api.tvmaze.com/search/shows?q=${query}`)
+        this.$http.get(`https://api.tvmaze.com/search/shows?q=${query}`)
         .then((res) => {
           console.log('Successful Request');
           res.body.forEach((showObj) => {
