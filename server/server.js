@@ -9,15 +9,18 @@ const routes = require('./routes');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, './dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
-var webpack = require('webpack');
-var webpackConfig = require('./webpack.config');
+const webpack = require('webpack');
+const webpackConfig = require('../webpack.config');
+const webpackDevMiddleware = require ('webpack-dev-middleware');
+const webpackHotMiddleware = require ('webpack-hot-middleware');
+
 var compiler = webpack(webpackConfig);
-app.use(require("webpack-dev-middleware")(compiler, {
+app.use(webpackDevMiddleware(compiler, {
     noInfo: true, publicPath: '/'
 }));
-app.use(require("webpack-hot-middleware")(compiler));
+app.use(webpackHotMiddleware(compiler));
 
 app.use(cors());
 app.options('*', cors());
