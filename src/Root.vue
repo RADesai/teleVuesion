@@ -75,11 +75,15 @@
 </script>
 
 <style scoped>
+  .jumbotron {
+    background-color: #FFF;
+  }
+
   .header {
     border-radius: 10px;
     border-width: thin;
     border-color: #54acee;
-    background-color: #867bcd;
+    background-color: #867BCD;
   }
 
   .head {
@@ -88,7 +92,7 @@
   }
 
   input {
-    color: #867Bcd;
+    color: #867BCD;
   }
 
   input:focus {
@@ -101,7 +105,7 @@
     display: inline-block;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
-    color: #111162;
+    color: #867BCD;
   }
 
   .show {

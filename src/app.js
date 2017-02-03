@@ -7,11 +7,13 @@ import Show from './components/Show.vue';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
+const routes = [
+  { path: '/', component: Root }
+];
+
 let router = new VueRouter({
-  routes: [
-    { path: '/', component: Root },
-    { path: '/show/:showId', props: true, component: Show }
-  ]
+  routes,
+  mode: 'history'
 });
 
 new Vue({
