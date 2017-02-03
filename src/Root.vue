@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div v-if="selected" class="selected">
+      <Show :show="show" :shows="shows"></Show>
+    </div>
+    <div v-if="!selected" class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 header">
         <br>
         <div class="head">
-          <h2>TVue will help you find the best on TV!</h2>
+          <h2>Search TVue for the best on TV!</h2>
         </div>
         <br>
         <div class="display">
@@ -13,11 +16,13 @@
         <br>
       </div>
     </div>
-    <div class="row">
+    <div v-if="!selected" class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
         <br>
         <div class="shows" v-for="show in shows">
-          <router-link :to="`show/${show.id}`" :show="show">{{ show.name }}<img :src="show.image.medium" class="show"></router-link>
+          <!-- <router-link :to="`show/${show.id}`" :show="show">{{ show.name }}<img :src="show.image.medium" class="show"></router-link> -->
+          {{ show.name }}
+          <img @click="setShow(show)" :src="show.image.medium" class="show">
         </div>
       </div>
     </div>
@@ -26,7 +31,7 @@
 
 <script>
   import $ from 'jquery';
-  import Show from './components/Show.vue'
+  import Show from './components/Show.vue';
   export default {
     name: 'app',
     components: {
@@ -59,6 +64,11 @@
       },
       searchPreview: function(query) {
         query = document.getElementById('query').value;
+      },
+      setShow: function(show) {
+        console.log('clicked:', show);
+        this.selected = true;
+        this.show = show;
       }
     }
   }
@@ -105,9 +115,9 @@ input:focus {
 }
 
 .show:hover {
-  opacity: 0.75;
-  text-decoration: none;
+  opacity: 0.7;
   color: #FFD877;
+  cursor: pointer;
 }
 
 .test {
