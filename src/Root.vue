@@ -12,7 +12,7 @@
           </div>
           <br>
           <div class="display">
-            <input type="text" v-on:keyup="searchPreview()" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Search for a show"></input>
+            <input type="text" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Search for a show"></input>
           </div>
           <br>
         </div>
@@ -20,10 +20,12 @@
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
           <br>
-          <div class="shows" v-for="show in shows">
-            {{ show.name }}
-            <img @click="setShow(show)" :src="show.image.medium" class="show">
-          </div>
+          <transition-group name="list" tag="p">
+            <div class="shows" v-for="show in shows" v-bind:key="show">
+              {{ show.name }}
+              <img @click="setShow(show)" :src="show.image.medium" class="show">
+            </div>
+          </transition-group>
         </div>
       </div>
     </div>
@@ -52,7 +54,6 @@
         this.shows = [];
         this.$http.get(`https://api.tvmaze.com/search/shows?q=${query}`)
         .then((res) => {
-          console.log('Successful Request');
           res.body.forEach((showObj) => {
             let program = showObj.show;
             let image = showObj.show.image.medium;
@@ -106,6 +107,15 @@
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
     color: #867BCD;
+    transition: all 2s;
+  }
+
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .list-leave-active {
+    position: absolute;
   }
 
   .show {

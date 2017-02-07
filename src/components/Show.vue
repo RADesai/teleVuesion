@@ -10,9 +10,11 @@
           <input type="text" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Another show on your mind?" ></input>
         </div>
         <br>
-        <div class="shows" v-for="show in shows">
-          <img @click="setShow(show)" :src="show.image.medium" height="175" class="show">
-        </div>
+        <transition-group name="list" tag="p">
+          <div class="shows" v-for="show in shows" v-bind:key="show">
+            <img @click="setShow(show)" :src="show.image.medium" height="175" class="show">
+          </div>
+        </transition-group>
       </div>
       <div class="col-sm-6 intro">
         <h1>{{ this.details.name }}</h1>
@@ -77,7 +79,6 @@
         this.shows = [];
         this.$http.get(`https://api.tvmaze.com/search/shows?q=${query}`)
         .then((res) => {
-          console.log('Successful Request');
           res.body.forEach((showObj) => {
             let program = showObj.show;
             let image = showObj.show.image.medium;
@@ -100,6 +101,11 @@
         this.maze = this.gotShow._links.self.href.slice(28) || false;
         for (let detail in this.details) {
           this.details[detail] = this.gotShow[detail];
+        }
+      },
+      cleanShows: function() {
+        while (this.shows.length > 10) {
+          this.shows.pop();
         }
       }
     }
@@ -125,10 +131,16 @@
   }
 
   .shows {
+    transition: all 1.5s;
     display: inline-block;
-    text-decoration: none;
-    font-family: 'Nunito', sans-serif;
-    color: #111162;
+  }
+  /*Show List Transitions*/
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .list-leave-active {
+    position: absolute;
   }
 
   .show {
