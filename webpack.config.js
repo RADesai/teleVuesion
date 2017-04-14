@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = {
   // This is the "main" file which should include all other modules
   entry: [
-    'webpack-hot-middleware/client',
+    // 'webpack-hot-middleware/client',
     './src/app.js'
   ],
   // Where should the compiled file go?
@@ -40,7 +40,17 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
   vue: {
     loaders: {

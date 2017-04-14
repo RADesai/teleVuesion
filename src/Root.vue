@@ -12,7 +12,7 @@
           </div>
           <br>
           <div class="display">
-            <input type="text" v-on:keyup.enter="searchShows()" class="form-control" id="query" placeholder="Search for a show"></input>
+            <input type="text" v-on:keyup.enter="searchShows(this)" class="form-control" id="query" placeholder="Search for a show"></input>
           </div>
           <br>
         </div>
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-  import $ from 'jquery';
   import Show from './components/Show.vue';
   export default {
     name: 'app',
@@ -61,7 +60,7 @@
           });
         })
         .catch((err) => {
-          console.log('Error in TVmase Request:', err);
+          // console.log('Error in TVmase Request:', err);
         });
       },
       searchPreview: function(query) {

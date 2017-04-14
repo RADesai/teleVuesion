@@ -9,7 +9,8 @@ const routes = require('./routes');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname, '../dist')));
 
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');

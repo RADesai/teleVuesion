@@ -12,7 +12,7 @@
         <br>
         <transition-group name="list" tag="p">
           <div class="shows" v-for="show in shows" v-bind:key="show">
-            <img @click="setShow(show)" :src="show.image.medium" height="175" class="show">
+            <img @click="newShow(show)" :src="show.image.medium" height="175" class="show">
           </div>
         </transition-group>
       </div>
@@ -70,7 +70,7 @@
     },
     props: ['show'],
     mounted() {
-      this.setShow(this.show);
+      this.newShow(this.show);
     },
     methods: {
       searchShows: function() {
@@ -86,13 +86,13 @@
           });
         })
         .catch((err) => {
-          console.log('Error in TVmase Request:', err);
+          // console.log('Error in TVmase Request:', err);
         });
       },
       searchPreview: function(query) {
         query = document.getElementById('query').value;
       },
-      setShow: function(show) {
+      newShow: function(show) {
         this.gotShow = show;
         this.images = this.gotShow.image || false;
         this.genres = this.gotShow.genres || false;
